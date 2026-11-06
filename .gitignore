@@ -147,3 +147,13 @@ vite.config.ts.timestamp-*
 
 # Turbo Repo
 .turbo
+
+
+# Java and Maven
+target/
+*.class
+
+# Local IDE-generated files
+.classpath
+.project
+.settings/
