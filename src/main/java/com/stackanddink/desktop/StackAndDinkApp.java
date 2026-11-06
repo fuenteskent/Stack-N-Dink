@@ -42,6 +42,47 @@ public class StackAndDinkApp extends Application {
             "Registered Players: 0"
         );
 
+        
+        Label courtCount = new Label("Courts: 0");
+
+        Button addCourtButton = new Button("Add Court");
+        Button removeCourtButton = new Button("Remove Selected Court");
+
+        ListView<String> courtList = new ListView<>();
+
+        Runnable refreshCourts = () -> {
+            courtList.getItems().setAll(
+                session.getCourts()
+                    .stream()
+                    .map(c -> "Court " + c.number() + " - Available")
+                    .toList()
+            );
+
+            courtCount.setText(
+                "Courts: " + session.getCourts().size()
+            );
+        };
+
+        addCourtButton.setOnAction(e -> {
+            session.addCourt();
+            refreshCourts.run();
+        });
+
+        removeCourtButton.setOnAction(e -> {
+            int selected = courtList.getSelectionModel()
+                                    .getSelectedIndex();
+
+            if (selected >= 0) {
+                int courtNumber = session.getCourts()
+                                        .get(selected)
+                                        .number();
+
+                session.removeCourt(courtNumber);
+                refreshCourts.run();
+            }
+        });
+
+
         Label errorLabel = new Label();
         errorLabel.setStyle("-fx-text-fill: red;");
 
@@ -79,6 +120,7 @@ public class StackAndDinkApp extends Application {
 
         HBox.setHgrow(nameInput, Priority.ALWAYS);
 
+        
         VBox root = new VBox(
             15,
             title,
@@ -86,12 +128,16 @@ public class StackAndDinkApp extends Application {
             inputRow,
             errorLabel,
             playerCount,
-            playerList
+            playerList,
+            courtCount,
+            addCourtButton,
+            removeCourtButton,
+            courtList
         );
 
         root.setPadding(new Insets(25));
 
-        Scene scene = new Scene(root, 600, 480);
+        Scene scene = new Scene(root, 750, 700);
 
         stage.setTitle("Stack-N-Dink v0.1.0");
         stage.setScene(scene);
