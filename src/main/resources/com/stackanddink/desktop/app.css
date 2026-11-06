@@ -1,0 +1,45 @@
+.root {
+    -fx-background-color: #0f172a;
+    -fx-font-family: "Segoe UI";
+}
+
+.label {
+    -fx-text-fill: #f8fafc;
+}
+
+.button {
+    -fx-background-color: #14b8a6;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 10;
+    -fx-padding: 10 18;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: #0d9488;
+}
+
+.text-field {
+    -fx-background-color: #1e293b;
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: #94a3b8;
+    -fx-background-radius: 10;
+    -fx-padding: 12;
+}
+
+.list-view {
+    -fx-background-color: #1e293b;
+    -fx-control-inner-background: #1e293b;
+    -fx-background-radius: 10;
+}
+
+.list-cell {
+    -fx-background-color: #1e293b;
+    -fx-text-fill: white;
+    -fx-padding: 12;
+}
+
+.list-cell:filled:selected {
+    -fx-background-color: #0f766e;
+}

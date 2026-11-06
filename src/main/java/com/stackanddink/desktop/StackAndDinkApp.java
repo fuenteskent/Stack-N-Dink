@@ -140,6 +140,15 @@ public class StackAndDinkApp extends Application {
         Scene scene = new Scene(root, 750, 700);
 
         stage.setTitle("Stack-N-Dink v0.1.0");
+
+        scene.getStylesheets().add(
+            StackAndDinkApp.class
+                .getResource("app.css")
+                .toExternalForm()
+        );
+
+
+
         stage.setScene(scene);
         stage.show();
     }
